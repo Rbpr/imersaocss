@@ -1,37 +1,269 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* - reset do css - limpa a formatação padrão */
+/* soft reset do css */
+
 body {
-    background-image: url('https://img.elo7.com.br/product/zoom/1A8E364/painel-mapa-g-frete-gratis-artigos-de-festa-infantil.jpg');
+    background-image: url('https://thumbs.dreamstime.com/b/fundo-celular-abstrato-84408518.jpg');
     background-size:auto 100vh;
     height: 100vh;
-    font-family:arial;
+    font-family: 'Anton', sans-serif;
+    font-size: 12px;
+    /*fonts.google.com - onde tem fontes para carregar*/
   }
-  
+
+  /*se a tela tiver pelo menos 400px vai carregar esses estilos*/
+  @media (min-width: 400px) {
+    body {
+      font-size: 14px;
+    }
+  }
+
+  /*tambem chamado breakpoint, vai mudando para cada tamanho de tela, celular*/
+  @media (min-width: 600px) {
+    body {
+      font-size: 18px;
+    }
+  }
+
+    /* breakpoint */
+@media (min-width: 1200px) {
+  body {
+    font-size: 20px;
+    }
+  }
+
+    header {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
   .menu{
     background: white;
+    position: fixed;
+    width: 100vw;
+    top:0;
+    z-index: 1;
+  }
+
+  .menu ul {
+    display: flex;
+    justify-content: space-around;
   }
   
-  a{
-    text-decoration:none;
+  .menu li {
+   list-style: none; 
   }
   
-  a:hover{
-    text-decoration:underline;
+  .menu a{
+    display: block;
+    transition: background-color 1s, color 1s;
+    padding: 10px 20px;
+  }
+
+  .menu a:active,
+  .menu a:hover {
+    background-color: teal;
+    color: white;
+  }
+
+  a {
+    color: teal;
+    text-decoration: none;
   }
   
-  .menu li{
-    list-style:none;
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .titulo {
+    transform: scale(0.2) translateY(50vh);
+    opacity: 0;
+    animation: 1s ease 1s animacaoTitulo forwards;
   }
   
-  .menu ul{
-    display:flex;
-    justify-content:space-around;
+  @keyframes animacaoTitulo {
+    from {
+      transform: scale(0.2) translateY(50vh);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
   }
-  
+
   .site-subtitle,
   .site-title {
     text-align: center;
     color: whitesmoke;
   }
   
-  .site-subtitle{
-    font-style:italic;
+  .site-title {
+    font-size: 4em;
+    font-family: 'Roboto Slab', serif;
   }
+
+  .site-subtitle{
+      font-style:italic;
+      line-height: 1.5em;
+  }
+
+  h3{
+    color: whitesmoke;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    background-color: cornflowerblue;
+  }
+
+  .sobre,
+  .contato,
+  .portfolio {
+    padding: 2em;
+    min-height: 100vh;
+  }
+    /*para debug, colocar background: pink; pois ve o tamanho da tela*/
+
+    @media (min-width: 1200px) {
+      .container {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1200px;
+      }
+    }
+
+  .sobre h2,
+  .contato h2,
+  .portfolio h2 {
+    font-family: 'DM Mono', monospace;
+    color: whitesmoke;
+    margin-bottom: 1.5em;
+    font-size: 2em;
+  }
+
+  .sobre p {
+    color: white;
+    text-indent: 1.2em;
+    margin-bottom: 1.2em;
+    text-align: justify;
+  }
+  
+  .sobre a {
+    color: white;
+    text-decoration: underline;
+  }
+
+  .sobre a:hover {
+    background-color: whitesmoke;
+    text-decoration: none;
+    color: rgba(79, 133, 184, 0.438);
+  }
+  
+  .sobre .avatar {
+    clip-path:ellipse(35% 46% at 39% 50%);
+    margin-left: 2em;
+  }
+
+  .sobre .avatar img{
+    height: 300px;
+    width: 200px;
+      }
+  
+  @media (min-width: 600px) {
+    .sobre .avatar {
+      clip-path: ellipse(35% 46% at 39% 50%);
+      float: right;
+    }
+  }
+
+  @media (min-width: 880px) {
+    .portfolio .grid {
+      grid-template-columns: repeat(3, 260px);
+      align-content: center;
+      justify-content: center;
+      height: calc(100vh - 8em - 48px);
+    }
+  }
+  
+  .flip-card {
+    height: 180px;
+    perspective: 1000px;
+  }
+  
+  .flip-card:hover .card {
+    transform: rotateY(180deg);
+  }
+  
+  .card {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 3s;
+  }
+  
+  .card-front, 
+  .card-back {
+    backface-visibility: hidden;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  
+  .card-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, .7);
+    height: 100px;
+    width: 180px;
+    transform: rotateY(180deg);
+  }
+ 
+  .portfolio .grid {
+    display: grid;
+    gap: 2em;
+  }
+
+  @media (min-width: 400px) {
+    .portfolio .grid {
+      grid-template-columns: 200px 200px;
+    }
+  }
+  
+   .portfolio figure {
+    text-align: center;
+  }
+
+.img-portfolio {
+  height: 100px;
+  width: 180px;
+  object-fit: cover;
+  object-position: left bottom;
+  transition: transform 500ms;
+}
+
+/* .img-portfolio:hover {
+  transform: scale(1.2) rotate(-2deg);
+} */
+
+.contato .icons {
+  text-align: center;
+}
+
+.contato a {
+  color: whitesmoke;
+  font-size: 4em;
+  transition: text-shadow 1s;
+}
+
+.contato a:active,
+.contato a:hover {
+  text-decoration: none;
+  text-shadow: 0px 0px 60px rgba(218, 231, 231, 0.664);
+}
+
